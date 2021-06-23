@@ -5,14 +5,14 @@ let grid = document.getElementById("grid");
 
 // Adds a row
 function addRow() {
-    if (numCols === 0) {
-        numCols++;
-    }
-
     const row = document.createElement("tr");
     const col = document.createElement("td");
     row.appendChild(col);
     grid.appendChild(row);
+
+    if (numCols === 0) {
+        numCols++;
+    }
 
     numRows++;
 }
@@ -21,7 +21,24 @@ function addRow() {
 
 // Adds a column
 function addCol() {
-    alert("Clicked Add Col")
+    const col = document.createElement("td");
+
+    if (numRows === 0) {
+        const row = document.createElement("tr");
+        row.appendChild(col);
+        grid.appendChild(row);
+        numRows++;
+    } else {
+        const row = document.getElementsByTagName("tr");
+
+        for (let r = 0; r < numRows; r++) {
+            for (let c = 0; c < numCols; c++) {
+                row[r].appendChild(col);
+            }
+        }
+    }
+
+    numCols++;
 }
 
 
