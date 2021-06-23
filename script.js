@@ -6,13 +6,13 @@ let grid = document.getElementById("grid");
 // Adds a row
 function addRow() {
     const row = document.createElement("tr");
-    const col = document.createElement("td");
-    row.appendChild(col);
-    grid.appendChild(row);
 
-    if (numCols === 0) {
-        numCols++;
+    for (let idxCol = -1; idxCol < numCols; idxCol++) {
+        const col = document.createElement("td");
+        row.appendChild(col);
     }
+
+    grid.appendChild(row);
 
     numRows++;
 }
