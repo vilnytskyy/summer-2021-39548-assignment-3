@@ -21,7 +21,6 @@ function addRow() {
     grid.appendChild(row);
 
     numRows++;
-    console.log("ADDrows" + numRows);
 }
 
 
@@ -36,11 +35,8 @@ function addCol() {
         grid.appendChild(row);
 
         numRows++;
-        console.log("AddCols" + numRows);
     } else {
         const row = document.getElementsByTagName("tr");
-        console.log("AddColsElse" + numRows);
-
 
         // Add a column to every row
         for (let idxRow = 0; idxRow < numRows; idxRow++) {
