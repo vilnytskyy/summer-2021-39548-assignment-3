@@ -53,7 +53,17 @@ function addCol() {
 
 // Removes a row
 function removeRow() {
-    alert("Clicked Remove Row")
+    if (numRows > 0) {
+        const lastRow = grid.lastElementChild;
+
+        lastRow.remove();
+        
+        numRows--;
+
+        if (numRows === 0) {
+            numCols = 0;
+        }
+    }
 }
 
 
