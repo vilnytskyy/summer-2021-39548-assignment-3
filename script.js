@@ -7,8 +7,14 @@ let grid = document.getElementById("grid");
 function addRow() {
     const row = document.createElement("tr");
 
-    for (let idxCol = -1; idxCol < numCols; idxCol++) {
+    if (numCols === 0) {
+        numCols++;
+    }
+
+    // Create a row with numCols columns 
+    for (let idxCol = 0; idxCol < numCols; idxCol++) {
         const col = document.createElement("td");
+
         row.appendChild(col);
     }
 
@@ -21,20 +27,22 @@ function addRow() {
 
 // Adds a column
 function addCol() {
-    const col = document.createElement("td");
-
     if (numRows === 0) {
         const row = document.createElement("tr");
+        const col = document.createElement("td");
+
         row.appendChild(col);
         grid.appendChild(row);
+
         numRows++;
     } else {
         const row = document.getElementsByTagName("tr");
 
-        for (let r = 0; r < numRows; r++) {
-            for (let c = 0; c < numCols; c++) {
-                row[r].appendChild(col);
-            }
+        // Add a column to every row
+        for (let idxRow = 0; idxRow < numRows; idxRow++) {
+            const col = document.createElement("td");
+
+            row[idxRow].appendChild(col);
         }
     }
 
