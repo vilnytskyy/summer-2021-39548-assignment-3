@@ -53,14 +53,41 @@ function addCol() {
 
 // Removes a row
 function removeRow() {
-    alert("Clicked Remove Row")
+    if (numRows > 0) {
+        // Remove last row
+        grid.lastElementChild.remove();
+
+        numRows--;
+
+        if (numRows === 0) {
+            numCols = 0;
+        }
+    }
 }
 
 
 
 // Removes a column
 function removeCol() {
-    alert("Clicked Remove Col")
+    if (numCols > 0) {
+        const row = document.getElementsByTagName("tr");
+
+        // Remove a column from every row
+        for (let idxRow = 0; idxRow < numRows; idxRow++) {
+            row[idxRow].lastElementChild.remove();
+        }
+
+        numCols--;
+
+        if (numCols === 0) {
+            // Remove all rows if there are zero columns
+            for (let idxRow = 0; idxRow < numRows; idxRow++) {
+                grid.lastElementChild.remove();
+            }
+            
+            numRows = 0;
+        }
+    }
 }
 
 
