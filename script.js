@@ -21,6 +21,7 @@ function addRow() {
     grid.appendChild(row);
 
     numRows++;
+    console.log("ADDrows" + numRows);
 }
 
 
@@ -35,8 +36,11 @@ function addCol() {
         grid.appendChild(row);
 
         numRows++;
+        console.log("AddCols" + numRows);
     } else {
         const row = document.getElementsByTagName("tr");
+        console.log("AddColsElse" + numRows);
+
 
         // Add a column to every row
         for (let idxRow = 0; idxRow < numRows; idxRow++) {
@@ -54,10 +58,9 @@ function addCol() {
 // Removes a row
 function removeRow() {
     if (numRows > 0) {
-        const lastRow = grid.lastElementChild;
+        // Remove last row
+        grid.lastElementChild.remove();
 
-        lastRow.remove();
-        
         numRows--;
 
         if (numRows === 0) {
@@ -70,7 +73,25 @@ function removeRow() {
 
 // Removes a column
 function removeCol() {
-    alert("Clicked Remove Col")
+    if (numCols > 0) {
+        const row = document.getElementsByTagName("tr");
+
+        // Remove a column from every row
+        for (let idxRow = 0; idxRow < numRows; idxRow++) {
+            row[idxRow].lastElementChild.remove();
+        }
+
+        numCols--;
+
+        if (numCols === 0) {
+            // Remove all rows if there are zero columns
+            for (let idxRow = 0; idxRow < numRows; idxRow++) {
+                grid.lastElementChild.remove();
+            }
+            
+            numRows = 0;
+        }
+    }
 }
 
 
