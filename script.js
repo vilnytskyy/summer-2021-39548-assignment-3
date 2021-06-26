@@ -1,6 +1,11 @@
 let numRows = 0;
 let numCols = 0;
-let colorSelected;
+let colorSelected = "";
+const RED = "#f4817b";
+const BLUE = "#9abec1";
+const GREEN = "#a6cc8f";
+const YELLOW = "#f6c079";
+const DEFAULT = "#ffffff";
 let grid = document.getElementById("grid");
 
 // Adds a row
@@ -95,7 +100,35 @@ function removeCol() {
 // Sets global var to selected color
 function selected() {
     colorSelected = document.getElementById("selectedID").value;
-    console.log(colorSelected);
+}
+
+
+// Code based on the JS solution for event delegation found on https://coderethinked.com/event-bubbling/
+// Changes the background color of a cell to colorSelected when clicked
+grid.onclick = function (e){
+    const cell = e.target.closest("td");
+
+    if(!cell){
+        return;
+    }
+    
+    // Sets the backgroundColor that matches the colorSelected for the cell
+    switch (colorSelected) {
+        case "Red":
+            cell.style.backgroundColor = RED;
+            break;
+        case "Blue":
+            cell.style.backgroundColor = BLUE;
+            break;
+        case "Green":
+            cell.style.backgroundColor = GREEN;
+            break;
+        case "Yellow":
+            cell.style.backgroundColor = YELLOW;
+            break;
+        default:
+            cell.style.backgroundColor = DEFAULT;
+    }
 }
 
 
