@@ -5,7 +5,7 @@ const RED = "#f4817b";
 const BLUE = "#9abec1";
 const GREEN = "#a6cc8f";
 const YELLOW = "#f6c079";
-const DEFAULT = "#ffffff";
+const DEFAULT = "rgb(255, 255, 255)";
 let grid = document.getElementById("grid");
 
 // Adds a row
@@ -138,7 +138,7 @@ function fill() {
     const color = selected();
 
     for (let idx = 0; idx < cell.length; idx++) {
-        if(cell[idx].style.backgroundColor === color) continue;
+        if(window.getComputedStyle(cell[idx]).backgroundColor === color) continue;
         
         cell[idx].style.backgroundColor = color;
     }
@@ -151,7 +151,7 @@ function clearAll() {
     const cell = document.getElementsByTagName("td");
 
     for (let idx = 0; idx < cell.length; idx++) {
-        if(cell[idx].style.backgroundColor === DEFAULT) continue;
+        if(window.getComputedStyle(cell[idx]).backgroundColor === DEFAULT) continue;
         
         cell[idx].style.backgroundColor = DEFAULT;
     }
@@ -161,5 +161,12 @@ function clearAll() {
 
 // Fills all uncolored cells with the selected color
 function fillUncolored() {
-    alert("Clicked Fill All Uncolored")
+    const cell = document.getElementsByTagName("td");
+    const color = selected();
+
+    for (let idx = 0; idx < cell.length; idx++) {
+        if (window.getComputedStyle(cell[idx]).backgroundColor === DEFAULT) {
+            cell[idx].style.backgroundColor = color;
+        }
+    }
 }
