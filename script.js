@@ -5,7 +5,7 @@ const RED = "#f4817b";
 const BLUE = "#9abec1";
 const GREEN = "#a6cc8f";
 const YELLOW = "#f6c079";
-const DEFAULT = "#ffffff";
+const DEFAULT = "rgb(255, 255, 255)";
 let grid = document.getElementById("grid");
 
 // Adds a row
@@ -97,10 +97,24 @@ function removeCol() {
 
 
 
-// Sets global var to selected color
+// Sets global var to selected color and returns the hex for that color
 function selected() {
     colorSelected = document.getElementById("selectedID").value;
+
+    switch (colorSelected) {
+        case "Red":
+            return RED;
+        case "Blue":
+            return BLUE;
+        case "Green":
+            return GREEN;
+        case "Yellow":
+            return YELLOW;
+        default:
+            return DEFAULT;
+    }
 }
+
 
 
 // Code based on the JS solution for event delegation found on https://coderethinked.com/event-bubbling/
@@ -113,41 +127,46 @@ grid.onclick = function (e){
     }
     
     // Sets the backgroundColor that matches the colorSelected for the cell
-    switch (colorSelected) {
-        case "Red":
-            cell.style.backgroundColor = RED;
-            break;
-        case "Blue":
-            cell.style.backgroundColor = BLUE;
-            break;
-        case "Green":
-            cell.style.backgroundColor = GREEN;
-            break;
-        case "Yellow":
-            cell.style.backgroundColor = YELLOW;
-            break;
-        default:
-            cell.style.backgroundColor = DEFAULT;
-    }
+    cell.style.backgroundColor = selected();
 }
 
 
 
 // Fills all cells with the selected color
 function fill() {
-    alert("Clicked Fill All")
+    const cell = document.getElementsByTagName("td");
+    const color = selected();
+
+    for (let idx = 0; idx < cell.length; idx++) {
+        if(window.getComputedStyle(cell[idx]).backgroundColor === color) continue;
+        
+        cell[idx].style.backgroundColor = color;
+    }
 }
 
 
 
 // Clears all cells
 function clearAll() {
-    alert("Clicked Clear All")
+    const cell = document.getElementsByTagName("td");
+
+    for (let idx = 0; idx < cell.length; idx++) {
+        if(window.getComputedStyle(cell[idx]).backgroundColor === DEFAULT) continue;
+        
+        cell[idx].style.backgroundColor = DEFAULT;
+    }
 }
 
 
 
 // Fills all uncolored cells with the selected color
 function fillUncolored() {
-    alert("Clicked Fill All Uncolored")
+    const cell = document.getElementsByTagName("td");
+    const color = selected();
+
+    for (let idx = 0; idx < cell.length; idx++) {
+        if (window.getComputedStyle(cell[idx]).backgroundColor === DEFAULT) {
+            cell[idx].style.backgroundColor = color;
+        }
+    }
 }
