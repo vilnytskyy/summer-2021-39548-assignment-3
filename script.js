@@ -148,7 +148,13 @@ function fill() {
 
 // Clears all cells
 function clearAll() {
-    alert("Clicked Clear All")
+    const cell = document.getElementsByTagName("td");
+
+    for (let idx = 0; idx < cell.length; idx++) {
+        if(cell[idx].style.backgroundColor === DEFAULT) continue;
+        
+        cell[idx].style.backgroundColor = DEFAULT;
+    }
 }
 
 
