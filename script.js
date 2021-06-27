@@ -5,7 +5,7 @@ const RED = "#E13D48";
 const BLUE = "#2C7BF2";
 const GREEN = "#1CC454";
 const YELLOW = "#FFF01F";
-const DEFAULT = "rgb(255, 255, 255)";
+const DEFAULT = "rgb(65, 60, 88)";
 let grid = document.getElementById("grid");
 
 // Adds a row
