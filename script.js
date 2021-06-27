@@ -1,11 +1,11 @@
 let numRows = 0;
 let numCols = 0;
 let colorSelected = "";
-const RED = "#f4817b";
-const BLUE = "#9abec1";
-const GREEN = "#a6cc8f";
-const YELLOW = "#f6c079";
-const DEFAULT = "rgb(255, 255, 255)";
+const RED = "#E13D48";
+const BLUE = "#2C7BF2";
+const GREEN = "#1CC454";
+const YELLOW = "#FFF01F";
+const DEFAULT = "rgb(65, 60, 88)";
 let grid = document.getElementById("grid");
 
 // Adds a row
