@@ -1,14 +1,29 @@
+body{
+    background-color: #413C58;
+    text-align: center;
+}
+
+button, select{
+    border: 2px double #6A6293;
+    background-color: #BAB6CE;
+    padding: 5px 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    font-weight: 600;
+}
+
 table{
     border-collapse: collapse;
+    margin: auto;
+    margin-top: 10px;
 }
 
 tr,td{
-    border:2px;
-    border-style: solid;
+    border: 2px solid black;
 }
 
 td{
     height: 50px;
     width: 50px;
-    background-color: white;
+    background-color: #413C58;
 }
